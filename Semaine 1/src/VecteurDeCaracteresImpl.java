@@ -117,7 +117,6 @@ public class VecteurDeCaracteresImpl implements VecteurDeCaracteres{
 	}
 
 	public char remplace(int rang, char caractere)throws VecteurOutException {
-
 		// TODO 
 		// PENSEZ A CONSULTER LA JAVADOC (cfr Interface VecteurDeCaracteres)
 		if (rang>=taille || rang<0)
@@ -139,7 +138,6 @@ public class VecteurDeCaracteresImpl implements VecteurDeCaracteres{
 		for (int i = 0; i < rang; i++) {
 			temp[i]=table[i];
 		}
-
 		for (int i = rang; i < taille-1; i++) {
 			temp[i]=table[i+1];
 		}
