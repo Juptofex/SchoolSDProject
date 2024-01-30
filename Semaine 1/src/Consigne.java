@@ -39,10 +39,10 @@ public class Consigne{
 	 */
 	public int attribuerCasierLibre(String motDePasse) {
 		// TODO
-		if (casiersLibres.estVide())
-			return -1;
 		if (motDePasse==null || motDePasse.equals(""))
 			throw new IllegalArgumentException();
+		if (casiersLibres.estVide())
+			return -1;
 		Casier index = casiersLibres.pop();
 		index.setMotDePasse(motDePasse);
 		return index.getNumero();
@@ -59,9 +59,14 @@ public class Consigne{
 	 */
 	public boolean libererCasier(int numeroCasier, String motDePasse) {
 		// TODO
-		if (numeroCasier>tousLesCasiers.length || motDePasse==null || motDePasse.equals(""))
+		if (numeroCasier>=tousLesCasiers.length || numeroCasier<0 || motDePasse==null || motDePasse.equals(""))
 			throw new IllegalArgumentException();
-		return false;
+		Casier index = tousLesCasiers[numeroCasier];
+		if (index.getMotDePasse()!=motDePasse)
+			return false;
+		casiersLibres.push(index);
+		index.setMotDePasse(null);
+		return true;
 
 	}
 
