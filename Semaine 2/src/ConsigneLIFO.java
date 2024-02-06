@@ -37,13 +37,11 @@ public class ConsigneLIFO {
 	 * @throws IllegalArgumentException si le mot de passe est vide ou null
 	 */
 	public int attribuerCasierLibre(String motDePasse) {
-		// TODO		
 		if(motDePasse==null||motDePasse.equals(""))
 			throw new IllegalArgumentException();
 		if (casiersLibres.isEmpty())
 			return -1;
 		Casier index = casiersLibres.get(casiersLibres.size()-1);
-		Casier casier = index;
 		index.setMotDePasse(motDePasse);
 		casiersLibres.remove(index);
 		return index.getNumero();
@@ -59,7 +57,6 @@ public class ConsigneLIFO {
 	 *                                  et/ou si le mot de passe est vide ou null
 	 */
 	public boolean libererCasier(int numeroCasier, String motDePasse) {
-		// TODO
 		if(motDePasse==null||motDePasse.equals(""))
 			throw new IllegalArgumentException();
 		if(numeroCasier<0 || numeroCasier >= tousLesCasiers.length)
