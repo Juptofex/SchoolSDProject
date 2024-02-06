@@ -9,14 +9,16 @@ public class Consigne{
 	 */
 	public Consigne(int nombreCasiers){
 		// TODO
-		if (nombreCasiers<=0)
+		if(nombreCasiers<=0)
 			throw new IllegalArgumentException();
-		casiersLibres = new PileImpl<>(nombreCasiers);
+		casiersLibres = new PileImpl<Casier>();
 		tousLesCasiers = new Casier[nombreCasiers];
 		for (int i = 0; i < nombreCasiers; i++) {
-			tousLesCasiers[i]=new Casier(i);
-			casiersLibres.push(tousLesCasiers[i]);
+			Casier casier = new Casier(i);
+			casiersLibres.push(casier);
+			tousLesCasiers[i]=casier;
 		}
+		
 	}
 
 	/**
@@ -25,7 +27,8 @@ public class Consigne{
 	 */
 	public boolean resteUnCasierLibre() {
 		// TODO
-		return !casiersLibres.estVide();
+		//return false;
+		return casiersLibres.taille() != 0;
 	}
 
 	
@@ -36,14 +39,15 @@ public class Consigne{
 	 * @throws IllegalArgumentException si le mot de passe est vide ou null
 	 */
 	public int attribuerCasierLibre(String motDePasse) {
-		// TODO
-		if (motDePasse==null || motDePasse.equals(""))
+		// TODO		
+		//return 0;
+		if(motDePasse==null||motDePasse.equals(""))
 			throw new IllegalArgumentException();
-		if (casiersLibres.estVide())
+		if(casiersLibres.estVide())
 			return -1;
-		Casier index = casiersLibres.pop();
-		index.setMotDePasse(motDePasse);
-		return index.getNumero();
+		Casier casier = casiersLibres.pop();
+		casier.setMotDePasse(motDePasse);
+		return casier.getNumero();
 	}
 
 	
@@ -57,17 +61,17 @@ public class Consigne{
 	 */
 	public boolean libererCasier(int numeroCasier, String motDePasse) {
 		// TODO
-		if ( motDePasse==null || motDePasse.equals(""))
+		//return false;
+		if(motDePasse==null||motDePasse.equals(""))
 			throw new IllegalArgumentException();
 		if(numeroCasier<0 || numeroCasier >= tousLesCasiers.length)
 			throw new IllegalArgumentException();
-		Casier index = tousLesCasiers[numeroCasier];
-		if (!index.getMotDePasse().equals(motDePasse))
+		Casier casier = tousLesCasiers[numeroCasier];
+		if(!casier.getMotDePasse().equals(motDePasse))
 			return false;
-		casiersLibres.push(index);
-		index.setMotDePasse("");
+		casier.setMotDePasse("");
+		casiersLibres.push(casier);
 		return true;
-
 	}
 
 }
