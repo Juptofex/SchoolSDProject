@@ -51,14 +51,13 @@ public class FileImplViaTable<E> implements File<E>{
 
 
 	public void enfile(E element){
-		Object[] tempTable;
 		int index=indiceTete+taille;
 		int x=0;
 		if (index>=table.length) {
 			if (taille<table.length) {
 				x=index-table.length;
 			} else {
-				tempTable = new Object[table.length*2];
+				Object[] tempTable = new Object[table.length*2];
 				int i=0;
 				int j=0;
 				while (i!=indiceTete) {
