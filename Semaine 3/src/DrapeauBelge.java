@@ -9,8 +9,11 @@ public class DrapeauBelge {
 	 * construit une chaine contenant 3 noeuds avec les caracteres 'n', 'j' et 'r' (dans cet ordre)
 	 */
 	public DrapeauBelge() {
-		//TODO
-
+		NoeudCouleur noir = new NoeudCouleur('n');
+		premierNoir = noir;
+		noir.suivant = new NoeudCouleur('j');
+		dernierJaune = noir.suivant;
+		dernierJaune.suivant = new NoeudCouleur('r');
 	}
 
 	/**
@@ -20,7 +23,17 @@ public class DrapeauBelge {
 	 * @throws IllegalArgumentException si le caractere ne correspond pas a un des 3 caracteres : 'n', 'j' ou 'r'
 	 */
 	public void ajouter(char couleur){
-		// TODO
+		if (couleur=='n') {
+			premierNoir.suivant = new NoeudCouleur(couleur, premierNoir.suivant);
+		} else if (couleur=='j') {
+			dernierJaune.suivant = new NoeudCouleur(couleur, dernierJaune.suivant);
+			dernierJaune=dernierJaune.suivant;
+		} else if (couleur=='r') {
+			dernierJaune.suivant = new NoeudCouleur(couleur, dernierJaune.suivant);
+
+		} else {
+			throw new IllegalArgumentException();
+		}
 
 	}
 
