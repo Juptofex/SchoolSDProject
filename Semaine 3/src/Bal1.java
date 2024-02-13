@@ -17,10 +17,10 @@ public class Bal1 implements Bal{
      * construit un bal avec aucun participant
      */
     public Bal1(){
-        // TODO
         // construit une liste avec 2 noeuds bidons
         // les elements de ces noeuds bidons sont a null
-
+        tete = new NoeudEtudiant(null,derF = new NoeudEtudiant());
+        derM = tete;
     }
 
 
@@ -33,6 +33,14 @@ public class Bal1 implements Bal{
         if(etudiant==null)
             throw new IllegalArgumentException("etudiant null");
         //TODO
+        if (etudiant.getSexe()=='M') {
+            derM.suivant = new NoeudEtudiant(etudiant, derM.suivant);
+            derM=derM.suivant;
+        } else {
+            derF.etudiant = etudiant;
+            derF.suivant = new NoeudEtudiant();
+            derF=derF.suivant;
+        }
     }
 
     // A NE PAS MODIFIER
