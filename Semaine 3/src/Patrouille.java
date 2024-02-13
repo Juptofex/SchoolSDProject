@@ -16,8 +16,9 @@ public class Patrouille {
 			throw new IllegalArgumentException();
 		if(CP == null || CP.length()==0)
 			throw new IllegalArgumentException();
-	
-		// TODO
+		this.nomPatrouille=nomPatrouille;
+		tete= new Noeud(CP);
+		nombreScouts++;
 	}
 	
 	public int getNombreScouts(){
@@ -33,8 +34,8 @@ public class Patrouille {
 	public void ajouterScout(String scout){
 		if(scout == null || scout.length()==0)
 			throw new IllegalArgumentException();
-
-		// TODO
+		tete.suivant= new Noeud(scout, tete.suivant);
+		nombreScouts++;
 	}
 	
 
