@@ -51,18 +51,27 @@ public class PileImplChainee<E> implements Pile<E>{
 	
 	
 	public void push(E element) {
-		//TODO
+		Noeud noeud = new Noeud(element, sommet);
+		sommet = noeud;
+		taille++;
 	}
 
 	
 	public E pop() throws PileVideException {
-		return null;
 		//TODO
+		if (taille==0)
+			throw new PileVideException();
+		E temp = sommet.element;
+		sommet = sommet.suivant;
+		taille--;
+		return temp;
 	}
 	
 	
 	public E sommet() throws PileVideException {
-		return null;
+		if (taille==0)
+			throw new PileVideException();
+		return sommet.element;
 		//TODO
 	}
 
