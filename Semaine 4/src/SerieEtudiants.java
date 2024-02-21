@@ -63,6 +63,10 @@ public class SerieEtudiants {
 	 */
 	public void ajouterEtudiant(String nom){
 		// TODO
+		if (nom==null || nom.equals(""))
+			throw new IllegalArgumentException();
+		if (!listeEtudiants.contains(nom))
+			listeEtudiants.add(nom);
 	}
 
 	
@@ -74,6 +78,12 @@ public class SerieEtudiants {
 	 */
 	public boolean supprimerEtudiant(String nom){
 		// TODO
+		if (nom==null || nom.equals(""))
+			throw new IllegalArgumentException();
+		if (listeEtudiants.add(nom)) {
+			listeEtudiants.remove(nom);
+			return true;
+		}
 		return false;
 	}
 
