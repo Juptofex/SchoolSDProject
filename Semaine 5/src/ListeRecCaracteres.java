@@ -19,9 +19,14 @@ public class ListeRecCaracteres {
 	 * @return true si le caractere est present dans la liste, false sinon
 	 */
 	public boolean contient(char caractereRecherche){
-		return false;
-		
-		//TODO
+		return contient(tete, caractereRecherche);
+	}
+	private boolean contient(NoeudCaractere noeud, char caractereRecherche) {
+		if (noeud==null)
+			return false;
+		if (noeud.caractere==caractereRecherche)
+			return true;
+		return contient(noeud.suivant, caractereRecherche);
 	}
 
 	
@@ -31,9 +36,15 @@ public class ListeRecCaracteres {
 	 * @return le nombre d'occurrences du caractere
 	 */
 	public int nombreOccurrences(char caractereRecherche){
-		return 0;
-	
-		//TODO
+		return nombreOccurences(tete, caractereRecherche);
+	}
+
+	private int nombreOccurences(NoeudCaractere noeud, char caractereRecherche) {
+		if (noeud==null)
+			return 0;
+		if (noeud.caractere==caractereRecherche)
+			return 1+nombreOccurences(noeud.suivant, caractereRecherche);
+		return nombreOccurences(noeud.suivant, caractereRecherche);
 	}
 
 	
@@ -43,8 +54,16 @@ public class ListeRecCaracteres {
 	 * @param nouveauCaractere le nouveau caractere
 	 */
 	public void remplacer(char caractereARemplacer, char nouveauCaractere){
-		
-		//TODO
+		remplacer(tete, caractereARemplacer, nouveauCaractere);
+	}
+	private void remplacer(NoeudCaractere noeud, char caractereARemplacer, char nouveauCaractere) {
+		if (noeud==null)
+			return;
+		if (noeud.caractere==caractereARemplacer) {
+			noeud.caractere = nouveauCaractere;
+			return;
+		}
+		remplacer(noeud.suivant, caractereARemplacer, nouveauCaractere);
 	}
 
 	
@@ -54,10 +73,15 @@ public class ListeRecCaracteres {
 	 * @param nouveauCaractere le nouveau caractere
 	 */
 	public void remplacerTout(char caractereARemplacer, char nouveauCaractere){
-	
-		//TODO
+		remplacerTout(tete, caractereARemplacer,  nouveauCaractere);
 	}
-	
+	private void remplacerTout(NoeudCaractere noeud , char caractereARemplacer, char nouveauCaractere){
+		if (noeud==null)
+			return;
+		if (noeud.caractere==caractereARemplacer)
+			noeud.caractere=nouveauCaractere;
+		remplacerTout(noeud.suivant, caractereARemplacer, nouveauCaractere);
+	}
 	
 	/**
 	 * recherche le plus grand caractere de la liste ('a'<'b'< ...)
@@ -65,17 +89,21 @@ public class ListeRecCaracteres {
 	 * @throws NoSuchElementException si la liste est vide
 	 */
 	public char max() {
-		
-		return' ';
-		
+		if (tete==null)
+			throw new NoSuchElementException();
+		return max(tete);
 		// le plus petit caractere : ' '
-		//TODO
-		
 		// c'est cette methode qui leve une exception en cas de liste vide!
 		// suggestion : la methode recursive (private!) pourrait renvoyer ' ' si le noeud passe en parametre est null
 	}
-	
-	
+	private char max(NoeudCaractere noeud) {
+		if (noeud==null)
+			return ' ';
+		char maxSuivant = max(noeud.suivant);
+		if (noeud.caractere>maxSuivant)
+			return noeud.caractere;
+		return maxSuivant;
+	}
 	
 	
 	/**
@@ -84,8 +112,8 @@ public class ListeRecCaracteres {
 	 * @return l'arrayList cree
 	 */
 	public ArrayList<Character> enArrayList(){
-		
-		return  null;
+		ArrayList<Character> temp=new ArrayList<>();
+		return  enArrayList(tete, temp);
 		
 		// TODO
 		
@@ -93,6 +121,12 @@ public class ListeRecCaracteres {
 		// l'arrayList est un objet --> passage de parametre par adresse 
 		// La methode recursive est une methode void!
 		
+	}
+	private void enArrayList(NoeudCaractere noeud, ArrayList<Character> array) {
+		if (noeud==null)
+			return;
+		array.add(noeud.caractere);
+		enArrayList(noeud.suivant ,array);
 	}
 
 	/**
