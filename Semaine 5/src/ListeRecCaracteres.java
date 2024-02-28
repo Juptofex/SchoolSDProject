@@ -113,14 +113,11 @@ public class ListeRecCaracteres {
 	 */
 	public ArrayList<Character> enArrayList(){
 		ArrayList<Character> temp=new ArrayList<>();
-		return  enArrayList(tete, temp);
-		
-		// TODO
-		
+		enArrayList(tete, temp);
+		return temp;
 		// cette methode s'occupe de creer (1x!) l'arraylist et la passe en parametre de la methode recursive
 		// l'arrayList est un objet --> passage de parametre par adresse 
 		// La methode recursive est une methode void!
-		
 	}
 	private void enArrayList(NoeudCaractere noeud, ArrayList<Character> array) {
 		if (noeud==null)
@@ -136,13 +133,18 @@ public class ListeRecCaracteres {
 	 * @return true si les 2 listes sont les memes, false sinon
 	 */
 	public boolean estEgalA(ListeRecCaracteres l){
-		
-		return false;
-
+		return estEgalA(tete, l.tete);
 		// N'utilisez pas la methode toString()!
-
 		// TODO
-		
+	}
+	private boolean estEgalA(NoeudCaractere noeud1, NoeudCaractere noeud2) {
+		if (noeud1==null&&noeud2==null)
+			return true;
+		if (noeud1==null||noeud2==null)
+			return false;
+		if (noeud1.caractere!=noeud2.caractere)
+			return false;
+		return estEgalA(noeud1.suivant, noeud2.suivant);
 	}
 	
 	
