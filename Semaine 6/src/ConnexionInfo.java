@@ -6,34 +6,35 @@ public class ConnexionInfo {
  	// N'OUBLIEZ PAS DE COMPLETER LA METHODE HASHCODE() DE LA CLASSE LOGININFO
  	
  	public ConnexionInfo(){
-		// TODO
-
+		ensembleDesConnectes = new EnsembleTableBooleens<>(137);
 	}
  	
  	public	int nombreDeConnectes(){
- 		return 0;
- 		// TODO
-
+		return ensembleDesConnectes.taille();
 	}
 
  	// ajoute le loginInfo s'il n'est pas encore connecte
 	public boolean connecter(LoginInfo loginInfo){
-		return false;
-		// TODO
-
+		if (loginInfo.hashCode()>136)
+			return false;
+		if (ensembleDesConnectes.contient(loginInfo))
+			return false;
+		ensembleDesConnectes.ajouter(loginInfo);
+		return true;
 	}
 
 	// retire le loginInfo s'il est connecte
 	public boolean deconnecter(LoginInfo loginInfo){
-		return false;
-		// TODO
-
+		if (loginInfo.hashCode()>136)
+			return false;
+		if (!ensembleDesConnectes.contient(loginInfo))
+			return false;
+		ensembleDesConnectes.enlever(loginInfo);
+		return true;
 	}
 
 	public boolean estConnecte(LoginInfo loginInfo){
-		return false;
-		// TODO
-
+		return ensembleDesConnectes.contient(loginInfo);
 	}
 	
 

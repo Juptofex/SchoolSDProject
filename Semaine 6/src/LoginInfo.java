@@ -20,8 +20,7 @@ public class LoginInfo {
 		// TODO
 		// OBSERVEZ LES MANIPULATIONS DE CHAINES DE CARACTERES DANS LE CONSTRUCTEUR!
 		// Integer.parseInt() permet de convertir une chaine de caractere en un entier!
-		return -1;
-
+		return Integer.parseInt(login.substring(4,7))-1;
 	}
 	
 }
