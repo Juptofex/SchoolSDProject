@@ -13,33 +13,33 @@ public class EnsembleTableBooleens<E> implements Ensemble<E>{
 	}
 
 	public int taille(){
-		// TODO
-		return 0;
-
+		return taille;
 	}
 	
 	public boolean estVide(){
-		// TODO
-		return false;
-
+		if (taille>0)
+			return false;
+		return true;
 	}
 
 	public boolean contient(E element){
-		// TODO
-		return false;
-
+		return table[element.hashCode()];
 	}
 
 	public boolean ajouter(E element){
-		// TODO
-		return false;
+		if (contient(element))
+			return false;
+		table[element.hashCode()]=true;
+		taille++;
+		return true;
 
 	}
 
 	public boolean enlever(E element){
-		// TODO
-		return false;
-
+		if (!contient(element))
+			return false;
+		table[element.hashCode()]=false;
+		taille--;
+		return true;
 	}
-
 }
