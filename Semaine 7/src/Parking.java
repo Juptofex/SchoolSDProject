@@ -51,7 +51,6 @@ public class Parking {
 	 * @return true si la voiture etait presente, false sinon
 	 */
 	public boolean retirerVoiture(String plaque){
-		// TODO
 		if (!mapVoitures.containsKey(plaque))
 			return false;
 		mapVoitures.remove(plaque);
@@ -70,7 +69,6 @@ public class Parking {
 		// utilisez la methode keySet() !
 		// pour trier une table, utilisez la methode static sort de la classe Arrays
 		// cette methode trie la table passee en parametre !
-		//TODO
 		String[] temp  = mapVoitures.keySet().toArray(new String[0]);
 		Arrays.sort(temp);
 		return temp;
