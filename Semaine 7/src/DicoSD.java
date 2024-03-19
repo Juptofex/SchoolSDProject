@@ -1,12 +1,17 @@
+import java.net.URL;
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class DicoSD {
 	
 	//TODO
 	// suivez l'implementation proposee dans l'enonce!
-
+	HashMap<String, LinkedList<String>> mapUrl;
 
 	// Au depart le dico est vide
 	public DicoSD() {
 		//TODO
+		mapUrl = new HashMap<>();
 	}
 
 	/**
@@ -16,8 +21,14 @@ public class DicoSD {
 	 * @return true si cette association n'etait pas encore presente dans le dico, false sinon
 	 */
 	public boolean ajouter(String sd, String url){
-		return false;
-			//TODO
+		//TODO
+		if (mapUrl.containsKey(sd) && mapUrl.get(sd).contains(url))
+			return false;
+		if (!mapUrl.containsKey(sd)) {
+			mapUrl.put(sd,new LinkedList<>());
+		}
+		mapUrl.get(sd).add(url);
+		return true;
 	}
 	
 	/**
@@ -27,8 +38,8 @@ public class DicoSD {
 	 * @return true si sd est present, false sinon
 	 */
 	public boolean contient(String sd){
-		return false;
 		//TODO
+		return mapUrl.containsKey(sd);
 	}
 	
 	
@@ -38,8 +49,10 @@ public class DicoSD {
 	 * @return une chaine de caracteres avec les urls selon le format : [urlPile1, urlPile2] ou [] si la structure de donnees n'existe pas
 	 */
 	public String lesURLs(String sd){
-		return null;
 		//TODO
+		if (!mapUrl.containsKey(sd))
+			return "[]";
+		return mapUrl.get(sd).toString();
 	}
 	
 	/**
@@ -49,8 +62,11 @@ public class DicoSD {
 	 * @return true si l'association etait presente dans le dico, false sinon
 	 */
 	public boolean supprimer(String sd, String url){
-		return false;
 		//TODO
+		if (!mapUrl.containsKey(sd))
+			return false;
+		mapUrl.remove(sd, url);
+		return true;
 	}
 		
 }
