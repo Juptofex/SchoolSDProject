@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Aout_2023/Aout_2023.iml" filepath="$PROJECT_DIR$/Aout_2023/Aout_2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Juin_2021/Juin_2021.iml" filepath="$PROJECT_DIR$/Juin_2021/Juin_2021.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Juin_2022/Juin_2022.iml" filepath="$PROJECT_DIR$/Juin_2022/Juin_2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Juin_2023/Juin_2023.iml" filepath="$PROJECT_DIR$/Juin_2023/Juin_2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Juin_2023RE/Juin_2023RE.iml" filepath="$PROJECT_DIR$/Juin_2023RE/Juin_2023RE.iml" />
       <module fileurl="file://$PROJECT_DIR$/SchoolSDProject.iml" filepath="$PROJECT_DIR$/SchoolSDProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/Semaine 1/Semaine 1.iml" filepath="$PROJECT_DIR$/Semaine 1/Semaine 1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Semaine 2/Semaine 2.iml" filepath="$PROJECT_DIR$/Semaine 2/Semaine 2.iml" />
